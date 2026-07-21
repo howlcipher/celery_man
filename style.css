@@ -6,6 +6,7 @@
     --win-title-bg: #000080;
     --display-bg: #000000;
     --terminal-green: #33ff00;
+    --terminal-glow: rgba(51, 255, 0, 0.5);
 }
 
 body {
@@ -141,8 +142,9 @@ body {
     right: 0;
     background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
     z-index: 2;
-    background-size: 100% 2px, 3px 100%;
+    background-size: 100% 3px, 6px 100%;
     pointer-events: none;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
 }
 
 .placeholder-img {
@@ -225,21 +227,24 @@ body {
     border-left: 2px solid var(--win-border-dark);
     border-right: 2px solid var(--win-border-light);
     border-bottom: 2px solid var(--win-border-light);
-    height: 100px;
+    height: 120px;
+    min-height: 120px;
+    max-height: 120px;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
+    text-shadow: 0 0 5px var(--terminal-glow);
 }
 
 .output-log {
     flex-grow: 1;
     overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    display: block;
 }
 
 .output-log p {
     margin: 2px 0;
+    line-height: 1.2;
 }
 
 .error-text {

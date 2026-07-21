@@ -108,12 +108,25 @@ class TerminalManager {
 
     log(message, isInput = false) {
         const p = document.createElement('p');
-        p.textContent = (isInput ? '> ' : '') + message;
+        p.textContent = isInput ? '> ' + message : '';
         if (message.includes('WARNING')) {
             p.classList.add('error-text');
         }
         this.logEl.appendChild(p);
         this.logEl.scrollTop = this.logEl.scrollHeight;
+
+        if (!isInput) {
+            let i = 0;
+            const typeWriter = () => {
+                if (i < message.length) {
+                    p.textContent += message.charAt(i);
+                    i++;
+                    this.logEl.scrollTop = this.logEl.scrollHeight;
+                    setTimeout(typeWriter, 20);
+                }
+            };
+            typeWriter();
+        }
     }
 
     execute(cmdKey) {
