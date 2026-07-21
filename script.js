@@ -25,15 +25,15 @@ class DisplayManager {
         this.placeholder.style.display = 'none';
         this.image.src = src;
         this.image.style.display = 'block';
-        
-        // Reset animations by cloning
-        const newImg = this.image.cloneNode(true);
-        this.image.parentNode.replaceChild(newImg, this.image);
-        this.image = newImg;
     }
 
     addEffect(effectClass, duration = 0) {
         if (!this.currentSequence) return false;
+        
+        // Remove previous effects so they don't conflict or stack
+        this.clearEffects();
+        
+        void this.image.offsetWidth; // force reflow
         
         this.image.classList.add(effectClass);
         this.activeEffects.add(effectClass);
