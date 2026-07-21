@@ -11,7 +11,7 @@ class DisplayManager {
     constructor() {
         this.container = document.getElementById('display-area');
         this.image = document.getElementById('sequence-image');
-        this.placeholder = document.getElementById('placeholder-text');
+        this.placeholder = document.getElementById('placeholder-image');
         this.printout = document.getElementById('printout');
         this.warning = document.getElementById('nude-tayne-warning');
         
